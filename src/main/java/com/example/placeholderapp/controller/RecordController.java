@@ -14,10 +14,16 @@ public class RecordController
 {
     RecordService recordService;
 
-    @GetMapping("/records")
+    @GetMapping(value = "/records", produces = "application/json")
     public List<Record> findAll()
     {
         return recordService.findAll();
+    }
+
+    @GetMapping(value = "/records/{id}", produces = "application/json")
+    public Record findById(@PathVariable Integer id)
+    {
+        return recordService.findById(id);
     }
 
     @GetMapping(value = "/records/get/{title}", produces = "application/json")

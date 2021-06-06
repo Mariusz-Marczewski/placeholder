@@ -1,5 +1,6 @@
 package com.example.placeholderapp.service;
 
+import com.example.placeholderapp.exception.RecordNotFoundException;
 import com.example.placeholderapp.model.Record;
 import com.example.placeholderapp.repository.RecordRepository;
 import lombok.Value;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Value
 @Service
@@ -30,13 +32,17 @@ public class RecordService
         return recordRepository.findAll();
     }
 
+    public Record findById(Integer id)
+    {
+//        return Optional.of(recordRepository.getById(id))
+//                .orElseThrow(RecordNotFoundException::new);
+        return recordRepository.getById(id);
+    }
+
     public List<Record> getRecordByTitle(String title)
     {
-        if(title != null)
-        {
-            return recordRepository.getRecordByTitle(title);
-        }
-        return new ArrayList<>(recordRepository.findAll());
+        return Optional.of(recordRepository.getRecordByTitle(title))
+                .orElseThrow(RecordNotFoundException::new);
     }
 
     public void deleteRecord(Integer id)

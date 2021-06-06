@@ -22,7 +22,7 @@ public class RecordServiceTest
     private RecordService sut;
 
     @BeforeEach
-    public void deleteAllRecords()
+    public void setUp()
     {
         sut.deleteAll();
     }
@@ -106,6 +106,8 @@ public class RecordServiceTest
         // when
 
         List<Record> recordByTitle = sut.getRecordByTitle(title);
+
+        // then
 
         assertThat(recordByTitle.size()).isEqualTo(1);
         assertThat(recordByTitle.get(0)).isEqualTo(record1);
