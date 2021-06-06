@@ -1,0 +1,24 @@
+POST http://localhost:8080/records/add
+Content-Type: application/json
+
+{
+  "title": "z",
+  "body": "s",
+  "userId": "4"
+}
+
+###
+
+GET http://localhost:8080/records
+Accept: application/json
+
+###
+
+GET http://localhost:8080/records/get/w
+Accept: application/json
+
+###
+
+GET http://localhost:8080/records/find/z
+Accept: application/json
+
