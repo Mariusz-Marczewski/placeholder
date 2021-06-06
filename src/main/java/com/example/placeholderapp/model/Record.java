@@ -22,10 +22,10 @@ public class Record
     private String title;
     private String body;
 
-    public Record(String title, String body)
+    public Record(Integer id, String title, String body)
     {
+        this.id = id;
         this.title = title;
         this.body = body;
-        this.userId = userId;
     }
 }

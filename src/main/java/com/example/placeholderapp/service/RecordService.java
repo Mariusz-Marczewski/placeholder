@@ -59,6 +59,11 @@ public class RecordService
         return recordRepository.save(createRecord()).getId();
     }
 
+    public void deleteAll()
+    {
+        recordRepository.deleteAll();
+    }
+
     private Record createRecord()
     {
         Record record = null;
