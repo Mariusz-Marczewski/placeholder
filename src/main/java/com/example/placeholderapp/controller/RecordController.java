@@ -33,7 +33,7 @@ public class RecordController
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/records/add")
+    @PostMapping(value = "/records/add", consumes = "application/json")
     public ResponseEntity<Integer> add(@RequestBody Record record)
     {
         return new ResponseEntity<Integer>(recordService.addRecord(record), HttpStatus.CREATED);
@@ -43,5 +43,11 @@ public class RecordController
     public ResponseEntity<Record> update(Record record)
     {
         return new ResponseEntity<>(recordService.updateRecord(record), HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "records/import", consumes = "application/json")
+    public ResponseEntity<Integer> create()
+    {
+        return new ResponseEntity<>(recordService.addRecordFromPlaceHolder(), HttpStatus.CREATED);
     }
 }

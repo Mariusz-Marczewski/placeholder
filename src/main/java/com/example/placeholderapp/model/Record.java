@@ -11,13 +11,13 @@ import java.util.Objects;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Record
 {
     @Transient
     private Integer userId;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String title;
     private String body;

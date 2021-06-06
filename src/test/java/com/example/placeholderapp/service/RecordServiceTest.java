@@ -102,23 +102,4 @@ public class RecordServiceTest
         assertThat(recordByTitle.size()).isEqualTo(1);
         assertThat(recordByTitle.get(0)).isEqualTo(record1);
     }
-
-    @Test
-    @Transactional
-    public void shouldReturnAllRecordsWhenTitleIsNotPresent()
-    {
-        // given
-
-        Record record1 = new Record("title1", "body1");
-        Record record2 = new Record("title2", "body2");
-        sut.addRecord(record1);
-        sut.addRecord(record2);
-        String title = "test";
-
-        // when
-
-        List<Record> recordByTitle = sut.getRecordByTitle(title);
-
-        assertThat(recordByTitle.size()).isEqualTo(2);
-    }
 }
