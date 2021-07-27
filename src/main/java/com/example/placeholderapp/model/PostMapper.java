@@ -6,7 +6,7 @@ import org.mapstruct.MappingTarget;
 import java.util.List;
 
 @org.mapstruct.Mapper(componentModel = "spring")
-public interface Mapper
+public interface PostMapper
 {
     @Mapping(target = "edited", ignore = true)
     @Mapping(target = "deleted", ignore = true)
