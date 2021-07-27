@@ -1,7 +1,7 @@
 package com.example.placeholderapp.controller;
 
-import com.example.placeholderapp.model.Record;
-import com.example.placeholderapp.service.RecordService;
+import com.example.placeholderapp.model.Post;
+import com.example.placeholderapp.service.PostService;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,24 +10,18 @@ import java.util.List;
 
 @Value
 @RestController
-public class RecordController
+public class PostController
 {
-    RecordService recordService;
+    PostService recordService;
 
     @GetMapping(value = "/records", produces = "application/json")
-    public List<Record> findAll()
+    public List<Post> findAll()
     {
         return recordService.findAll();
     }
 
-    @GetMapping(value = "/records/{id}", produces = "application/json")
-    public Record findById(@PathVariable Integer id)
-    {
-        return recordService.findById(id);
-    }
-
     @GetMapping(value = "/records/get/{title}", produces = "application/json")
-    public List<Record> getByTitle(@PathVariable String title)
+    public Post getByTitle(@PathVariable String title)
     {
         return recordService.getRecordByTitle(title);
     }
@@ -40,13 +34,13 @@ public class RecordController
     }
 
     @PostMapping(value = "/records/add", consumes = "application/json")
-    public ResponseEntity<Integer> add(@RequestBody Record record)
+    public ResponseEntity<Integer> add(@RequestBody Post record)
     {
         return new ResponseEntity<Integer>(recordService.addRecord(record), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "records/update", consumes = "application/json")
-    public ResponseEntity<Record> update(Record record)
+    public ResponseEntity<Post> update(Post record)
     {
         return new ResponseEntity<>(recordService.updateRecord(record), HttpStatus.CREATED);
     }

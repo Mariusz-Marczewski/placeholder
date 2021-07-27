@@ -1,14 +1,12 @@
 package com.example.placeholderapp.repository;
 
-import com.example.placeholderapp.model.Record;
+import com.example.placeholderapp.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
-
-public interface RecordRepository extends JpaRepository<Record, Integer>
+public interface PostRepository extends JpaRepository<Post, Integer>
 {
     @Query(value = "SELECT r.* FROM record r WHERE r.title = :title", nativeQuery = true)
-    List<Record> getRecordByTitle(String title);
+    Post getRecordByTitle(String title);
 
 }
